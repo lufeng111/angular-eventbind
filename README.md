@@ -75,5 +75,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
   ## 属性绑定
   <!-- 
   插值表达式和属性绑定是一个东西
-  
+  插值表达式和属性绑定两种效果是一样的，一般插值表达式写法更简单，但是angular 在渲染的时候，都是把插值表达式装换成 属性绑定 
    -->
+
+  ## html属性和dom属性的区别
