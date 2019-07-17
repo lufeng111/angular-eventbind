@@ -21,13 +21,23 @@
     就算把disabled="false"， 也还是禁用这个按钮，通过设置这个html属性的值是没有用的，但是可以设置buttom标签dom 属性的值来启用或禁用这个按钮，这个就是dom属性的价值，
   -->
 
-  <table>
+  <!-- <table>
     <tr>
-      <!-- dom属性绑定 -->
-      <!-- <td colspan="{{1+1}}">慕课网</td> -->
-      <!-- html属性绑定 -->
+      dom属性绑定
+      <td colspan="{{1+1}}">慕课网</td>
+      html属性绑定
       <td [attr.colspan]="size">慕课网</td>
     </tr>
-  </table>
+  </table> -->
+
+  <!-- css类绑定 -->
+  <!-- <div class="a b c">慕课网</div> -->
+  <!-- <div [class]="divClass">慕课网</div> -->
+
+  <!-- <div class="a b" [class.c]="isBig">慕课网</div> -->
+
+  <div [ngClass]="divClass" >慕课网</div>
+
+
 
 

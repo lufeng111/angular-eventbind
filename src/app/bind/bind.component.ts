@@ -6,10 +6,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bind.component.scss']
 })
 export class BindComponent implements OnInit {
-  size: number = 2;
+  divClass: string;
+  // size: number = 2;
+  // isBig:boolean = false;
+  divClass:any = {
+    a: false,
+    b: false,
+    c: false,
+  };
 
   // imgUrl:string = "http://placehold.it/400x220"
-  constructor() { }
+  constructor() {
+    setTimeout(() => {
+      // this.divClass = "a b c";
+      // this.isBig = true;
+
+      this.divClass = {
+        a: true,
+        b: true,
+        c: true,
+      };
+    },1000)
+   }
 
   ngOnInit() {
   }
