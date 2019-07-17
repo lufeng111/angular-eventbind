@@ -1,0 +1,41 @@
+<p>pipeline works!</p>
+<p>我的生日是{{birthday | date | uppercase}}</p>
+<!--
+  birthday 数据的值通过管道操作符 | 流动到右侧date 管道函数中，所有的管道都会用这种方式工作，
+  多个管道可以连接到一起组合成最后的效果，uppercase管道函数 把date管道函数中的数据都转换成大写，angular内置了十几个管道
+  最常用的：
+  date 日期管道函数
+  uppercase 字母大写管道函数
+  lowercase 字母小写管道函数
+
+ -->
+
+ <!-- date 管道 -->
+ <p>我的生日是{{birthday | date: 'yyyy-MM-dd HH:mm:ss'}}</p>
+ <!--
+  date 管道和其他管道不一样的地方就是它可以接收一个参数，用来指定当前的日期要格式化成一个什么样的形势
+  yyyy 年
+  MM 月
+  dd 天
+  HH 24小时制
+  hh 12小时制
+  mm 分钟
+  ss 秒
+  -->
+
+  <!-- number 管道 -->
+  <p>圆周率是{{pi | number: '2.2-2'}}</p>
+  <!--
+    2.  是两位的整数
+    2.2-2  两位的小数
+    2.1-4  1是最少有一位小数，4是小数点后面保留几位
+   -->
+
+   <!-- 自定义管道 -->
+   <!--
+    ng g pipe pipe/multiple  新建一个multiple管道
+    注意：管道和组件一样都是要声明在app.module模块的declarations:中的
+    -->
+    <p>试试我自己写的管道{{size | multiple: '2'}}</p>
+
+
