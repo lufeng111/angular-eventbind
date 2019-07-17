@@ -93,7 +93,7 @@ html属性和dom属性的关系
 6： 模板绑定是通过dom属性和事件来工作的，而不是html属性
 7： 插值表达式是dom属性绑定
  -->
-## dom 属性绑定
+## dom 属性绑定  插值表达式就是dom属性绑定
 <!-- 
 
 angular:
@@ -120,4 +120,63 @@ dom属性绑定机制： 当控制器greeting 值发生改变时，angular会使
 第五步： 当用户再input标签里输入内容时，浏览器也不会同步UI和html属性，用户看到的新值来自于dom,而不是html标签，所以修改input中的值是dom属性在变，不是html值，
 
 注意：[value]="greeting" 如果方括号没有写，angular不会把等号右侧的字符串greeting当成表达式来处理，并执行绑定的，而是会当成一个字符串赋值给value的值，
+ -->
+## html数据绑定
+<!-- 
+html绑定有三种情况：
+1：基本html属性绑定
+  <td [attr.colspan]="tableColspan">Something<td>
+  colspan：要绑定的html属性的名字
+  tableColspan: 绑定的表达式，表达式的值会被绑定到colspan这个属性上
+
+2：CSS类绑定
+  <div class="aaa bbb" [class]="someExpression">something</div>
+  <div [class.special]="isSpecial">something</div>
+  <div [ngClass]="{aaa: isA, bbb: isB}"></div>
+  
+
+  css类绑定是用来控制html元素上class的值，分三种情况：
+  第一种：[class]这个表达式someExpression的值会完全替换掉原来的div的class的值class="aaa bbb"， 
+  第二种： [class.special]="isSpecial"
+    special 样式的名字
+    isSpecial 表达式，这个表达式的值应该是一个布尔值，当这个布尔值是true时，样式special就会添加到这个div上，false就不会添加，
+  第三种： [ngClass] 这个指令可以控制多个css类是否显示，后面是一个对象{aaa: isA, bbb: isB}，这个对象里面属性的名字aaa，bbb， 就是CSS类的名字，后面表达式isA，isB，控制前面这个类是否显示
+
+3： 样式绑定
+  <button [style.color]="isSpecial?'red':'green'">Red</button>
+  <div [ngStyle]="{'font-style': this.canSave?'italic':'normal'}">
+  样式绑定控制的是样式，有两种情况
+  第一种：[style.color]="isSpecial?'red':'green'"
+  color是样式的名字，isSpecial表达式就是样式的值，比如isSpecial 是true就显示red,false就显示green
+  第二种： ngStyle是一个指令，它的值是一个对象，font-style是要控制的样式的名字，this.canSave表达式控制要展示那个样式，
+  
+  为什么要用html属性绑定？
+  因为当标签没有dom属性可绑的时候就用html属性绑定 
+ -->
+ ## 基本html属性绑定
+  <!-- 
+  angular:
+  @Component({...})
+  class MyComponent {
+    greeting: string = 'A value';
+  }
+  greeting: string 意思是greeting的数据类型是string
+  组件的控制器上有greeting 属性
+  当控制器greeting 发生改变时会触发angular的dom属性绑定机制，修改模板上input的dom属性，
+
+  模板：
+  <input [attr.value]="greeting">
+  模板value属性通过方括号[],和组件控制器上greeting属性绑定到一起，
+
+  浏览器：
+  DOM
+  inputElement.value === 'A value'
+
+  html属性绑定机制： 当控制器greeting 值发生改变时，angular会使用单向绑定机制来更新html, 这个单向是指从控制器的greeting属性到html元素的value属性，这个过程中angular 不更新dom节点inputElement.value的value属性，
+  第三步：dom获得了新的值A value，是因为浏览器同步了这个html元素和dom对象，所以这个对象的value值仍然会变成‘A value’，但是这个值不是由angular更新的，是由浏览器的同步机制来变得，因为浏览器会保持dom和UI同步，dom的value属性会被渲染到浏览器页面上，最终input框中还很会出现'A value'
+  -->
+## CSS类绑定
+<!-- 
+
+
  -->

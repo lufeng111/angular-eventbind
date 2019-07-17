@@ -6,7 +6,7 @@
 <!-- <img src="{{imgUrl}}" alt=""> -->
 
 <!-- html属性和dom属性的区别 -->
-<input value="Tom" (input)="doOnInput($event)">
+<!-- <input value="Tom" (input)="doOnInput($event)"> -->
 <!--
   当浏览器渲染<input value="Tom" (input)="doOnInput($event)">这样一个字符串的时候，他会创建一个相应的dom节点，
   dom是一个类型为html input element 的对象，每个dom都有自己的属性和方法，以这个(input) 为例，这个input的value属性会被初始化为Tom,
@@ -14,13 +14,20 @@
   html属性是不可变的，
  -->
 
- <button disabled="false">点我</button>
+ <!-- <button disabled="false">点我</button> -->
  <!--
    button 有一个属性disabled默认是false ,这个按钮是可点击的，但是只要按钮中 disabled 属性出现了，就会被初始化一个true,
    这个按钮就会被禁用掉，只要这个这个button中出现disabled 就会初始化为true, 添加或删除disabled这个属性会启用或禁用这个按钮，但是只要这个按钮中有disabled就会被初始化为true,
     就算把disabled="false"， 也还是禁用这个按钮，通过设置这个html属性的值是没有用的，但是可以设置buttom标签dom 属性的值来启用或禁用这个按钮，这个就是dom属性的价值，
-
-disabled
-
-
   -->
+
+  <table>
+    <tr>
+      <!-- dom属性绑定 -->
+      <!-- <td colspan="{{1+1}}">慕课网</td> -->
+      <!-- html属性绑定 -->
+      <td [attr.colspan]="size">慕课网</td>
+    </tr>
+  </table>
+
+
