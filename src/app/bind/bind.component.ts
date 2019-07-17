@@ -11,5 +11,9 @@ export class BindComponent implements OnInit {
 
   ngOnInit() {
   }
+  // event: any 意思是any是任意数据类型的
+  doOnClick(event: any) {
+    console.log(event);
+  }
 
 }

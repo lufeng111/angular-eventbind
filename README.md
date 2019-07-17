@@ -70,5 +70,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
   第一：等号右侧的表达式可以不是一个函数调用，也可以是一个属性赋值，想这个样子
   <button (click)="saved = true"></button> ,表示当我点击时组件的saved属性会被设为true, 
   第二点：被绑定的事件可以是标准的DOM事件，也可以是任意的自定义事件，
+   -->
+  
+  ## 属性绑定
+  <!-- 
+  插值表达式和属性绑定是一个东西
   
    -->
