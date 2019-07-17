@@ -79,3 +79,45 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
    -->
 
   ## html属性和dom属性的区别
+<!-- 
+console.log(event.target.value); 打印的是dom属性
+console.log(event.target.getAttribute("value")); 打印的是html属性
+dom属性 表示当前的值，html属性是初始化的值，
+
+html属性和dom属性的关系
+1： 少量html属性和dom属性之间有着1:1的映射，比如id
+2: 有些html属性没有对应的dom属性，如colspan
+3: 有些dom属性没有对应的html属性，如textContent
+4: 就算名字相同，html属性和dom属性也不是同一个东西
+5： html属性的值指定了初始值，dom属性的值表示当前值，dom属性的值可以改变，html属性的值不能改变
+6： 模板绑定是通过dom属性和事件来工作的，而不是html属性
+7： 插值表达式是dom属性绑定
+ -->
+## dom 属性绑定
+<!-- 
+
+angular:
+@Component({...})
+class MyComponent {
+  greeting: string = 'A value';
+}
+greeting: string 意思是greeting的数据类型是string
+组件的控制器上有greeting 属性
+当控制器greeting 发生改变时会触发angular的dom属性绑定机制，修改模板上input的dom属性，
+
+模板：
+<input [value]="greeting">
+模板value属性通过方括号[],和组件控制器上greeting属性绑定到一起，
+
+浏览器：
+DOM
+inputElement.value === 'A value'
+
+dom属性绑定机制： 当控制器greeting 值发生改变时，angular会使用单向绑定机制来更新dom, 这个单向是指从控制器的greeting到浏览器的DOM ，把dom属性的value的值inputElement.value改成greeting的值'A value'，这是第一步
+第二步 注意：angular的dom属性绑定不会更新html元素的属性，在这个例子中，html属性的值会一直是空的，
+第三步：因为浏览器会保持dom和你的UI同步，所以angular在改变dom的value属性之后，新的value的值，会被渲染到页面上，这时候input输入框中就会显示'A value', 
+第四步： 注意Dom的value属性的改变，不会更新与其相关的input标签的html属性，
+第五步： 当用户再input标签里输入内容时，浏览器也不会同步UI和html属性，用户看到的新值来自于dom,而不是html标签，所以修改input中的值是dom属性在变，不是html值，
+
+注意：[value]="greeting" 如果方括号没有写，angular不会把等号右侧的字符串greeting当成表达式来处理，并执行绑定的，而是会当成一个字符串赋值给value的值，
+ -->
